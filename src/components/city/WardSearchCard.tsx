@@ -67,7 +67,7 @@ export function WardSearchCard() {
         </Button>
       </div>
       <p className="mt-3 text-xs text-muted-foreground">
-        Instantly pull up ward офис contacts, councillor details and live civic metrics.
+        Instantly pull up ward office contacts, councillor details and live civic metrics.
       </p>
     </form>
   );
