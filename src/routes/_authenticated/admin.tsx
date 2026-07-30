@@ -37,8 +37,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
 });
 
 const STATUSES: ComplaintStatus[] = [
-  "submitted",
-  "acknowledged",
+  "pending",
+  "assigned",
   "in_progress",
   "resolved",
   "rejected",
@@ -79,7 +79,7 @@ function AdminPage() {
     return {
       labels,
       resolved: labels.map((l) => done.get(l) ?? 0),
-      pending: labels.map((l) => (total.get(l) ?? 0) - (done.get(l) ?? 0)),
+      open: labels.map((l) => (total.get(l) ?? 0) - (done.get(l) ?? 0)),
     };
   }, [list]);
 
@@ -126,7 +126,7 @@ function AdminPage() {
             <DepartmentPerformanceChart
               labels={byDepartment.labels}
               resolved={byDepartment.resolved}
-              pending={byDepartment.pending}
+              open={byDepartment.open}
             />
           </div>
         </div>
