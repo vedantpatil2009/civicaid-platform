@@ -17,6 +17,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WardsRouteImport } from './routes/wards'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedReportRouteImport } from './routes/_authenticated/report'
 
 const IndexRoute = IndexRouteImport.update({
@@ -58,6 +61,22 @@ const WardsRoute = WardsRouteImport.update({
   path: '/wards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedReportRoute = AuthenticatedReportRouteImport.update({
   id: '/report',
   path: '/report',
@@ -72,6 +91,9 @@ export interface FileRoutesByFullPath {
   '/map': typeof MapRoute
   '/services': typeof ServicesRoute
   '/wards': typeof WardsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/report': typeof AuthenticatedReportRoute
 }
 export interface FileRoutesByTo {
@@ -82,6 +104,9 @@ export interface FileRoutesByTo {
   '/map': typeof MapRoute
   '/services': typeof ServicesRoute
   '/wards': typeof WardsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/report': typeof AuthenticatedReportRoute
 }
 export interface FileRoutesById {
@@ -94,6 +119,9 @@ export interface FileRoutesById {
   '/map': typeof MapRoute
   '/services': typeof ServicesRoute
   '/wards': typeof WardsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/report': typeof AuthenticatedReportRoute
 }
 export interface FileRouteTypes {
@@ -106,6 +134,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/services'
     | '/wards'
+    | '/dashboard'
+    | '/notifications'
+    | '/profile'
     | '/report'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -116,6 +147,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/services'
     | '/wards'
+    | '/dashboard'
+    | '/notifications'
+    | '/profile'
     | '/report'
   id:
     | '__root__'
@@ -127,6 +161,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/services'
     | '/wards'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/notifications'
+    | '/_authenticated/profile'
     | '/_authenticated/report'
   fileRoutesById: FileRoutesById
 }
@@ -199,6 +236,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/report': {
       id: '/_authenticated/report'
       path: '/report'
@@ -210,10 +268,16 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedReportRoute: typeof AuthenticatedReportRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedReportRoute: AuthenticatedReportRoute,
 }
 
