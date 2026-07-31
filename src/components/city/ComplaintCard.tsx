@@ -13,9 +13,7 @@ export function ComplaintCard({
   const Wrapper = onSelect ? "button" : "div";
   return (
     <Wrapper
-      {...(onSelect
-        ? { type: "button" as const, onClick: () => onSelect(complaint) }
-        : {})}
+      {...(onSelect ? { type: "button" as const, onClick: () => onSelect(complaint) } : {})}
       className="surface-card hover-lift w-full space-y-3 p-5 text-left"
     >
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
@@ -36,7 +34,9 @@ export function ComplaintCard({
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
         <span className="inline-flex min-w-0 items-center gap-1.5">
           <MapPin className="size-3.5 shrink-0" aria-hidden />
-          <span className="truncate">{complaint.address ?? `Ward ${complaint.ward_number ?? "—"}`}</span>
+          <span className="truncate">
+            {complaint.address ?? `Ward ${complaint.ward_number ?? "—"}`}
+          </span>
         </span>
         <span className="inline-flex items-center gap-1.5">
           <CalendarClock className="size-3.5 shrink-0" aria-hidden />

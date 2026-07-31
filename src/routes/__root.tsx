@@ -82,15 +82,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Smart City Data Platform" },
       {
         name: "description",
-        content:
-          "Report civic issues, track resolution and monitor live city data across wards.",
+        content: "Report civic issues, track resolution and monitor live city data across wards.",
       },
       { name: "author", content: "Municipal Corporation" },
       { property: "og:title", content: "Smart City Data Platform" },
       {
         property: "og:description",
-        content:
-          "Report civic issues, track resolution and monitor live city data across wards.",
+        content: "Report civic issues, track resolution and monitor live city data across wards.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

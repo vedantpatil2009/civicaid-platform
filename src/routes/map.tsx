@@ -206,7 +206,11 @@ function MapPage() {
             ["#2347C6", "Facility / info"],
           ].map(([color, label]) => (
             <span key={label} className="inline-flex items-center gap-2">
-              <span className="size-3 rounded-full" style={{ backgroundColor: color }} aria-hidden />
+              <span
+                className="size-3 rounded-full"
+                style={{ backgroundColor: color }}
+                aria-hidden
+              />
               {label}
             </span>
           ))}

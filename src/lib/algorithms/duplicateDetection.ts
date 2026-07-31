@@ -18,7 +18,26 @@ export interface DuplicateMatch {
 }
 
 const STOP_WORDS = new Set([
-  "the","a","an","is","are","in","on","at","of","for","to","and","near","this","that","with","has","have","been","from",
+  "the",
+  "a",
+  "an",
+  "is",
+  "are",
+  "in",
+  "on",
+  "at",
+  "of",
+  "for",
+  "to",
+  "and",
+  "near",
+  "this",
+  "that",
+  "with",
+  "has",
+  "have",
+  "been",
+  "from",
 ]);
 
 export function tokenize(text: string): Set<string> {
@@ -46,7 +65,13 @@ export function jaccard(a: Set<string>, b: Set<string>): number {
  * proximity within the last 30 days.
  */
 export function findDuplicateComplaints(
-  incoming: { title: string; description: string; category: string; latitude?: number | null; longitude?: number | null },
+  incoming: {
+    title: string;
+    description: string;
+    category: string;
+    latitude?: number | null;
+    longitude?: number | null;
+  },
   existing: DuplicateCandidate[],
   options: { radiusMetres?: number; threshold?: number; windowDays?: number } = {},
 ): DuplicateMatch[] {

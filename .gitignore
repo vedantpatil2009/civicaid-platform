@@ -16,9 +16,18 @@ dist-ssr
 .nitro
 *.local
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Supabase
+supabase/.branches
+supabase/.temp
 
 # Editor directories and files
 .vscode/*

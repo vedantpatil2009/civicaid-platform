@@ -27,7 +27,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
       { title: "Admin Console — Smart City Data Platform" },
       {
         name: "description",
-        content: "Municipal staff console for triaging, assigning and resolving citizen complaints.",
+        content:
+          "Municipal staff console for triaging, assigning and resolving citizen complaints.",
       },
       { property: "og:title", content: "Admin Console" },
       { property: "og:description", content: "Triage and resolve citizen complaints." },
@@ -36,13 +37,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminPage,
 });
 
-const STATUSES: ComplaintStatus[] = [
-  "pending",
-  "assigned",
-  "in_progress",
-  "resolved",
-  "rejected",
-];
+const STATUSES: ComplaintStatus[] = ["pending", "assigned", "in_progress", "resolved", "rejected"];
 
 function AdminPage() {
   const { isStaff } = useAuth();

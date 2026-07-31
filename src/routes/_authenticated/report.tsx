@@ -20,11 +20,7 @@ import { PriorityBadge } from "@/components/common/StatusBadge";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDepartments, useWards } from "@/hooks/useCityData";
 import { useMyComplaints } from "@/hooks/useComplaints";
-import {
-  COMPLAINT_CATEGORIES,
-  createComplaint,
-  uploadComplaintPhoto,
-} from "@/services/complaints";
+import { COMPLAINT_CATEGORIES, createComplaint, uploadComplaintPhoto } from "@/services/complaints";
 import { calculateComplaintPriority } from "@/lib/algorithms/complaintPriority";
 import { findDuplicateComplaints } from "@/lib/algorithms/duplicateDetection";
 
@@ -278,7 +274,9 @@ function ReportPage() {
                 className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border bg-muted/50 p-4 text-sm text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
               >
                 <Camera className="size-5 shrink-0" aria-hidden />
-                <span className="truncate">{file ? file.name : "Attach a photo (optional, max 5 MB)"}</span>
+                <span className="truncate">
+                  {file ? file.name : "Attach a photo (optional, max 5 MB)"}
+                </span>
               </label>
               <input
                 id="photo"

@@ -49,8 +49,7 @@ export function detectHotspots(
       const key = m.category ?? "Other";
       counts.set(key, (counts.get(key) ?? 0) + 1);
     });
-    const dominantCategory =
-      [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "Other";
+    const dominantCategory = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "Other";
 
     clusters.push({
       centre: { lat, lng },

@@ -100,8 +100,8 @@ function AuthPage() {
             One account for every civic service.
           </h1>
           <p className="max-w-md text-primary-foreground/80">
-            File complaints with photo evidence, follow the SLA clock, receive resolution updates and
-            monitor live city telemetry.
+            File complaints with photo evidence, follow the SLA clock, receive resolution updates
+            and monitor live city telemetry.
           </p>
         </div>
         <p className="text-xs text-primary-foreground/70">
@@ -210,7 +210,11 @@ function AuthPage() {
                   />
                 </div>
                 <Button type="submit" disabled={loading} className="h-11 w-full rounded-xl">
-                  {loading ? <Loader2 className="size-4 animate-spin" aria-hidden /> : "Create account"}
+                  {loading ? (
+                    <Loader2 className="size-4 animate-spin" aria-hidden />
+                  ) : (
+                    "Create account"
+                  )}
                 </Button>
               </form>
             </TabsContent>

@@ -40,9 +40,7 @@ export function calculatePollutionRisk(reading: PollutionReading): PollutionRisk
   const pm25Score = clamp(((reading.pm25 ?? 0) / 250) * 100);
   const pm10Score = clamp(((reading.pm10 ?? 0) / 430) * 100);
   const no2Score = clamp(((reading.no2 ?? 0) / 400) * 100);
-  const index = Math.round(
-    aqiScore * 0.55 + pm25Score * 0.25 + pm10Score * 0.12 + no2Score * 0.08,
-  );
+  const index = Math.round(aqiScore * 0.55 + pm25Score * 0.25 + pm10Score * 0.12 + no2Score * 0.08);
   const band = aqiBand(reading.aqi);
   return { index, band, ...BAND_META[band] };
 }

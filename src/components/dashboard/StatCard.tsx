@@ -45,7 +45,9 @@ export function StatCard({
           <span
             className={cn(
               "inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-semibold",
-              trend.direction === "up" ? "bg-success/15 text-success" : "bg-destructive/10 text-destructive",
+              trend.direction === "up"
+                ? "bg-success/15 text-success"
+                : "bg-destructive/10 text-destructive",
             )}
           >
             {trend.direction === "up" ? (

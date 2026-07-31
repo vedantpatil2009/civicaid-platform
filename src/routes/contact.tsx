@@ -80,7 +80,10 @@ function ContactPage() {
             ) : (
               <ul className="space-y-3">
                 {departments.data?.map((dept) => (
-                  <li key={dept.id} className="surface-card grid gap-2 p-5 sm:grid-cols-[minmax(0,1fr)_auto]">
+                  <li
+                    key={dept.id}
+                    className="surface-card grid gap-2 p-5 sm:grid-cols-[minmax(0,1fr)_auto]"
+                  >
                     <div className="min-w-0">
                       <p className="font-semibold text-foreground">{dept.name}</p>
                       <p className="text-sm text-muted-foreground">{dept.description}</p>

@@ -26,13 +26,7 @@ import { AqiCard, FloodCard, TrafficCard, WeatherCard } from "@/components/city/
 import { CardSkeletonGrid, EmptyState } from "@/components/common/StateBlocks";
 import { Button } from "@/components/ui/button";
 import { CityMap, type MapMarker } from "@/components/map/CityMap";
-import {
-  useAlerts,
-  useMapPoints,
-  usePollution,
-  useTraffic,
-  useWeather,
-} from "@/hooks/useCityData";
+import { useAlerts, useMapPoints, usePollution, useTraffic, useWeather } from "@/hooks/useCityData";
 import { calculateTrafficDensity } from "@/lib/algorithms/trafficDensity";
 
 export const Route = createFileRoute("/")({
@@ -56,14 +50,55 @@ export const Route = createFileRoute("/")({
 });
 
 const QUICK_SERVICES = [
-  { title: "Report a complaint", description: "Photo, location and category in under a minute.", icon: Megaphone, to: "/report", tag: "Most used" },
-  { title: "Water supply", description: "Outages, low pressure and pipeline leakages.", icon: Droplets, to: "/services" },
-  { title: "Garbage collection", description: "Missed pickups, overflowing bins and dumping.", icon: Trash2, to: "/services" },
-  { title: "Property tax", description: "Assessment, dues and online payment receipts.", icon: FileText, to: "/services" },
-  { title: "Emergency contacts", description: "Hospitals, police, fire and disaster helplines.", icon: ShieldCheck, to: "/contact" },
-  { title: "Flood alerts", description: "Live water logging advisories for your ward.", icon: Waves, to: "/map" },
-  { title: "Traffic updates", description: "Corridor-level congestion and incident feed.", icon: Bus, to: "/map" },
-  { title: "Weather", description: "Rainfall, humidity and heat advisories.", icon: CloudSun, to: "/map" },
+  {
+    title: "Report a complaint",
+    description: "Photo, location and category in under a minute.",
+    icon: Megaphone,
+    to: "/report",
+    tag: "Most used",
+  },
+  {
+    title: "Water supply",
+    description: "Outages, low pressure and pipeline leakages.",
+    icon: Droplets,
+    to: "/services",
+  },
+  {
+    title: "Garbage collection",
+    description: "Missed pickups, overflowing bins and dumping.",
+    icon: Trash2,
+    to: "/services",
+  },
+  {
+    title: "Property tax",
+    description: "Assessment, dues and online payment receipts.",
+    icon: FileText,
+    to: "/services",
+  },
+  {
+    title: "Emergency contacts",
+    description: "Hospitals, police, fire and disaster helplines.",
+    icon: ShieldCheck,
+    to: "/contact",
+  },
+  {
+    title: "Flood alerts",
+    description: "Live water logging advisories for your ward.",
+    icon: Waves,
+    to: "/map",
+  },
+  {
+    title: "Traffic updates",
+    description: "Corridor-level congestion and incident feed.",
+    icon: Bus,
+    to: "/map",
+  },
+  {
+    title: "Weather",
+    description: "Rainfall, humidity and heat advisories.",
+    icon: CloudSun,
+    to: "/map",
+  },
 ];
 
 function HomePage() {
@@ -92,7 +127,9 @@ function HomePage() {
   )[0];
 
   const points = mapPoints.data ?? [];
-  const activeComplaints = points.filter((p) => p.status !== "resolved" && p.status !== "rejected").length;
+  const activeComplaints = points.filter(
+    (p) => p.status !== "resolved" && p.status !== "rejected",
+  ).length;
   const resolved = points.filter((p) => p.status === "resolved").length;
   const waterLogging = points.filter((p) => p.category === "Water Logging").length;
 
@@ -137,7 +174,11 @@ function HomePage() {
               monitor real-time traffic, air quality and flood telemetry across all wards.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-white text-primary hover:bg-white/90"
+              >
                 <Link to="/report">Report an issue</Link>
               </Button>
               <Button
@@ -177,10 +218,34 @@ function HomePage() {
             <CardSkeletonGrid />
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <StatCard label="Active complaints" value={activeComplaints} icon={AlertTriangle} tone="warning" hint="Open across all wards" />
-              <StatCard label="Resolved issues" value={resolved} icon={CheckCircle2} tone="success" hint="Closed by departments" />
-              <StatCard label="Peak air quality index" value={worstAir?.aqi ?? "—"} icon={Flame} tone="danger" hint={worstAir?.station ?? ""} />
-              <StatCard label="Water logging reports" value={waterLogging} icon={Waves} tone="info" hint="Live flood watch" />
+              <StatCard
+                label="Active complaints"
+                value={activeComplaints}
+                icon={AlertTriangle}
+                tone="warning"
+                hint="Open across all wards"
+              />
+              <StatCard
+                label="Resolved issues"
+                value={resolved}
+                icon={CheckCircle2}
+                tone="success"
+                hint="Closed by departments"
+              />
+              <StatCard
+                label="Peak air quality index"
+                value={worstAir?.aqi ?? "—"}
+                icon={Flame}
+                tone="danger"
+                hint={worstAir?.station ?? ""}
+              />
+              <StatCard
+                label="Water logging reports"
+                value={waterLogging}
+                icon={Waves}
+                tone="info"
+                hint="Live flood watch"
+              />
             </div>
           )}
 
@@ -237,14 +302,20 @@ function HomePage() {
 
         <section className="surface-card grid gap-6 overflow-hidden bg-primary-gradient p-8 text-primary-foreground sm:p-12 lg:grid-cols-[1.4fr_auto] lg:items-center">
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold sm:text-3xl">Something broken in your neighbourhood?</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">
+              Something broken in your neighbourhood?
+            </h2>
             <p className="max-w-2xl text-sm leading-relaxed text-primary-foreground/85 sm:text-base">
               Complaints are auto-prioritised, checked for duplicates and routed to the right
               department with an SLA clock attached.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full bg-white text-primary hover:bg-white/90"
+            >
               <Link to="/report">Report now</Link>
             </Button>
             <Button
@@ -260,10 +331,26 @@ function HomePage() {
 
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: Landmark, title: "Ward governance", body: "Councillor, office contacts and civic budgets for all 8 wards." },
-            { icon: Gauge, title: "Live telemetry", body: "Traffic density, AQI and rainfall refreshed continuously." },
-            { icon: Recycle, title: "Accountable SLAs", body: "Every department has a published resolution target." },
-            { icon: ShieldCheck, title: "Secure by design", body: "Row-level security keeps citizen data private." },
+            {
+              icon: Landmark,
+              title: "Ward governance",
+              body: "Councillor, office contacts and civic budgets for all 8 wards.",
+            },
+            {
+              icon: Gauge,
+              title: "Live telemetry",
+              body: "Traffic density, AQI and rainfall refreshed continuously.",
+            },
+            {
+              icon: Recycle,
+              title: "Accountable SLAs",
+              body: "Every department has a published resolution target.",
+            },
+            {
+              icon: ShieldCheck,
+              title: "Secure by design",
+              body: "Row-level security keeps citizen data private.",
+            },
           ].map((item) => (
             <article key={item.title} className="surface-card hover-lift space-y-2 p-5">
               <span className="grid size-10 place-items-center rounded-2xl bg-primary-soft text-primary">

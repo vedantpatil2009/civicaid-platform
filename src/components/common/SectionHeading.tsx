@@ -28,11 +28,15 @@ export function SectionHeading({
     >
       <div className={cn("min-w-0 space-y-2", align === "center" && "mx-auto max-w-2xl")}>
         {eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            {eyebrow}
+          </p>
         ) : null}
         <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{title}</h2>
         {description ? (
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{description}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {description}
+          </p>
         ) : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}

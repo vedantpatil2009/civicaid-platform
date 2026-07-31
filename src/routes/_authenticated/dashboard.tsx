@@ -15,7 +15,8 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { title: "My Complaints — Smart City Data Platform" },
       {
         name: "description",
-        content: "Track the status, priority and department assignment of every complaint you filed.",
+        content:
+          "Track the status, priority and department assignment of every complaint you filed.",
       },
       { property: "og:title", content: "My Complaints" },
       { property: "og:description", content: "Your civic complaint tracker." },

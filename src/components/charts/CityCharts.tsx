@@ -37,11 +37,23 @@ const baseOptions = {
   },
   scales: {
     x: { grid: { display: false }, ticks: { color: "#64748B", font: { size: 11 } } },
-    y: { grid: { color: GRID }, ticks: { color: "#64748B", font: { size: 11 } }, beginAtZero: true },
+    y: {
+      grid: { color: GRID },
+      ticks: { color: "#64748B", font: { size: 11 } },
+      beginAtZero: true,
+    },
   },
 } as const;
 
-function ChartFrame({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
+function ChartFrame({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle?: string;
+  children: React.ReactNode;
+}) {
   return (
     <section className="surface-card p-5 sm:p-6">
       <header className="mb-4 min-w-0">
@@ -125,8 +137,20 @@ export function DepartmentPerformanceChart({
         data={{
           labels,
           datasets: [
-            { label: "Resolved", data: resolved, backgroundColor: "#22C55E", borderRadius: 6, maxBarThickness: 30 },
-            { label: "Open", data: open, backgroundColor: "#F59E0B", borderRadius: 6, maxBarThickness: 30 },
+            {
+              label: "Resolved",
+              data: resolved,
+              backgroundColor: "#22C55E",
+              borderRadius: 6,
+              maxBarThickness: 30,
+            },
+            {
+              label: "Open",
+              data: open,
+              backgroundColor: "#F59E0B",
+              borderRadius: 6,
+              maxBarThickness: 30,
+            },
           ],
         }}
       />
@@ -134,13 +158,7 @@ export function DepartmentPerformanceChart({
   );
 }
 
-export function CategoryBreakdownChart({
-  labels,
-  values,
-}: {
-  labels: string[];
-  values: number[];
-}) {
+export function CategoryBreakdownChart({ labels, values }: { labels: string[]; values: number[] }) {
   return (
     <ChartFrame title="Complaints by category" subtitle="Share of total reports">
       <Doughnut
@@ -149,7 +167,9 @@ export function CategoryBreakdownChart({
             responsive: true,
             maintainAspectRatio: false,
             cutout: "62%",
-            plugins: { legend: { position: "right", labels: { boxWidth: 12, font: { size: 11 } } } },
+            plugins: {
+              legend: { position: "right", labels: { boxWidth: 12, font: { size: 11 } } },
+            },
           } as never
         }
         data={{

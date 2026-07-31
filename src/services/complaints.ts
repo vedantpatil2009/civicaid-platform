@@ -41,9 +41,7 @@ export async function fetchAllComplaints(): Promise<ComplaintWithDepartment[]> {
   return (data ?? []) as ComplaintWithDepartment[];
 }
 
-export async function createComplaint(
-  payload: TablesInsert<"complaints">,
-): Promise<Complaint> {
+export async function createComplaint(payload: TablesInsert<"complaints">): Promise<Complaint> {
   const { data, error } = await supabase.from("complaints").insert(payload).select().single();
   if (error) throw new Error(error.message);
   return data;

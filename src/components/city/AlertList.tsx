@@ -13,11 +13,18 @@ export function AlertList({ alerts }: { alerts: CityAlert[] }) {
   return (
     <ul className="space-y-3">
       {alerts.map((alert) => {
-        const tone = TONES[(alert.severity as keyof typeof TONES) in TONES ? (alert.severity as keyof typeof TONES) : "info"];
+        const tone =
+          TONES[
+            (alert.severity as keyof typeof TONES) in TONES
+              ? (alert.severity as keyof typeof TONES)
+              : "info"
+          ];
         const Icon = tone.icon;
         return (
           <li key={alert.id} className="surface-card flex gap-3 p-4">
-            <span className={cn("grid size-9 shrink-0 place-items-center rounded-xl", tone.className)}>
+            <span
+              className={cn("grid size-9 shrink-0 place-items-center rounded-xl", tone.className)}
+            >
               <Icon className="size-4.5" aria-hidden />
             </span>
             <div className="min-w-0 space-y-1">

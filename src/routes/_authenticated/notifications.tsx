@@ -39,7 +39,10 @@ function NotificationsPage() {
         {notifications.isLoading ? (
           <ListSkeleton rows={4} />
         ) : list.length === 0 ? (
-          <EmptyState title="Nothing yet" description="Updates on your complaints will appear here." />
+          <EmptyState
+            title="Nothing yet"
+            description="Updates on your complaints will appear here."
+          />
         ) : (
           <ul className="space-y-3">
             {list.map((item) => (

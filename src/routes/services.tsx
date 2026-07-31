@@ -42,33 +42,93 @@ const GROUPS = [
   {
     title: "Report & track",
     services: [
-      { title: "Report a complaint", description: "Raise a civic issue with photo and GPS location.", icon: Megaphone, to: "/report" },
-      { title: "Track complaints", description: "Follow status, assignment and SLA countdown.", icon: FileText, to: "/dashboard" },
-      { title: "Emergency response", description: "Disaster helplines and rapid response units.", icon: ShieldCheck, to: "/contact" },
+      {
+        title: "Report a complaint",
+        description: "Raise a civic issue with photo and GPS location.",
+        icon: Megaphone,
+        to: "/report",
+      },
+      {
+        title: "Track complaints",
+        description: "Follow status, assignment and SLA countdown.",
+        icon: FileText,
+        to: "/dashboard",
+      },
+      {
+        title: "Emergency response",
+        description: "Disaster helplines and rapid response units.",
+        icon: ShieldCheck,
+        to: "/contact",
+      },
     ],
   },
   {
     title: "Utilities",
     services: [
-      { title: "Water supply", description: "Outages, contamination and pipeline leakage.", icon: Droplets, to: "/report" },
-      { title: "Sewerage", description: "Blockages, manholes and drainage maintenance.", icon: Waves, to: "/report" },
-      { title: "Street lighting", description: "Faulty poles, dark lanes and signal lights.", icon: Lightbulb, to: "/report" },
-      { title: "Waste management", description: "Missed collection, bins and bulk waste pickup.", icon: Recycle, to: "/report" },
+      {
+        title: "Water supply",
+        description: "Outages, contamination and pipeline leakage.",
+        icon: Droplets,
+        to: "/report",
+      },
+      {
+        title: "Sewerage",
+        description: "Blockages, manholes and drainage maintenance.",
+        icon: Waves,
+        to: "/report",
+      },
+      {
+        title: "Street lighting",
+        description: "Faulty poles, dark lanes and signal lights.",
+        icon: Lightbulb,
+        to: "/report",
+      },
+      {
+        title: "Waste management",
+        description: "Missed collection, bins and bulk waste pickup.",
+        icon: Recycle,
+        to: "/report",
+      },
     ],
   },
   {
     title: "Civic & administration",
     services: [
-      { title: "Property tax", description: "Assessment, dues, receipts and rebates.", icon: Building2, to: "/contact" },
-      { title: "Health & sanitation", description: "Fogging, vector control and public health drives.", icon: HeartPulse, to: "/report" },
-      { title: "Parks & greenery", description: "Tree trimming, fallen trees and park upkeep.", icon: TreePine, to: "/report" },
+      {
+        title: "Property tax",
+        description: "Assessment, dues, receipts and rebates.",
+        icon: Building2,
+        to: "/contact",
+      },
+      {
+        title: "Health & sanitation",
+        description: "Fogging, vector control and public health drives.",
+        icon: HeartPulse,
+        to: "/report",
+      },
+      {
+        title: "Parks & greenery",
+        description: "Tree trimming, fallen trees and park upkeep.",
+        icon: TreePine,
+        to: "/report",
+      },
     ],
   },
   {
     title: "City intelligence",
     services: [
-      { title: "Live city map", description: "Complaints, flood, AQI and emergency facilities.", icon: Bus, to: "/map" },
-      { title: "Weather & flood watch", description: "Rainfall, humidity and water logging risk.", icon: CloudSun, to: "/map" },
+      {
+        title: "Live city map",
+        description: "Complaints, flood, AQI and emergency facilities.",
+        icon: Bus,
+        to: "/map",
+      },
+      {
+        title: "Weather & flood watch",
+        description: "Rainfall, humidity and water logging risk.",
+        icon: CloudSun,
+        to: "/map",
+      },
     ],
   },
 ];
@@ -109,12 +169,16 @@ function ServicesPage() {
               {departments.data?.map((dept) => (
                 <article key={dept.id} className="surface-card hover-lift space-y-3 p-5">
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                    <h3 className="truncate text-base font-semibold text-foreground">{dept.name}</h3>
+                    <h3 className="truncate text-base font-semibold text-foreground">
+                      {dept.name}
+                    </h3>
                     <span className="shrink-0 rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">
                       {dept.code}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{dept.description}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {dept.description}
+                  </p>
                   <dl className="grid gap-1 text-xs text-muted-foreground">
                     <div className="flex justify-between gap-3">
                       <dt>SLA target</dt>
@@ -126,7 +190,9 @@ function ServicesPage() {
                     </div>
                     <div className="flex justify-between gap-3">
                       <dt>Email</dt>
-                      <dd className="truncate font-semibold text-foreground">{dept.contact_email}</dd>
+                      <dd className="truncate font-semibold text-foreground">
+                        {dept.contact_email}
+                      </dd>
                     </div>
                   </dl>
                 </article>

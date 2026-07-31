@@ -68,7 +68,9 @@ export function WeatherCard({ reading }: { reading: WeatherReading }) {
         <span className="text-4xl font-bold leading-none text-foreground">
           {Number(reading.temperature_c).toFixed(0)}°
         </span>
-        <span className="pb-1 text-sm font-semibold text-muted-foreground">{reading.condition}</span>
+        <span className="pb-1 text-sm font-semibold text-muted-foreground">
+          {reading.condition}
+        </span>
       </div>
       <dl className="grid grid-cols-3 gap-2 text-xs">
         {[
